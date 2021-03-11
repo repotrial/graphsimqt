@@ -1,0 +1,12 @@
+name: diseasomes
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.6
+  - jupyter
+  - pandas
+  - scipy
+  - numpy
+  - seaborn
+  - graph-tool
+  - networkx
