@@ -1,2 +1,1 @@
-# diseasomes
-Analysing gene- and comorbidity-based diseasomes
+# Analyzes of gene- and comorbidity-based diseasomes
