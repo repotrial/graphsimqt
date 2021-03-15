@@ -3,6 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# DS_Store and PyCharm files
+*.DS_Store
+.idea/
+
+# Results directory.
+results/*
+results/README.md
+
 # C extensions
 *.so
 

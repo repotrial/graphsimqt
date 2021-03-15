@@ -1,0 +1,275 @@
+Range	Code Range	Description
+Range 1	A00-A09	Intestinal infectious diseases
+Range 2	A15-A19	Tuberculosis
+Range 3	A20-A28	Certain zoonotic bacterial diseases
+Range 4	A30-A49	Other bacterial diseases
+Range 5	A50-A64	Infections with a predominantly sexual mode of transmission
+Range 6	A65-A69	Other spirochaetal diseases
+Range 7	A70-A74	Other diseases caused by chlamydiae
+Range 8	A75-A79	Rickettsioses
+Range 9	A80-A89	Viral infections of the central nervous system
+Range 10	A92-A99	Arthropod-borne viral fevers and viral haemorrhagic fevers
+Range 11	B00-B09	Viral infections characterized by skin and mucous membrane lesions
+Range 12	B15-B19	Viral hepatitis
+Range 13	B20-B24	Human immunodeficiency virus [HIV] disease
+Range 14	B25-B34	Other viral diseases
+Range 15	B35-B49	Mycoses
+Range 16	B50-B64	Protozoal diseases
+Range 17	B65-B83	Helminthiases
+Range 18	B85-B89	Pediculosis, acariasis and other infestations
+Range 19	B90-B94	Sequelae of infectious and parasitic diseases
+Range 20	B95-B98	Bacterial, viral and other infectious agents
+Range 21	B99-B99	Other infectious diseases
+Range 22	C00-C14	Malignant neoplasms of lip, oral cavity and pharynx
+Range 23	C00-C75	Malignant neoplasms, stated or presumed to be primary, of specified sites, except of lymphoid, haematopoietic and related tissue
+Range 24	C00-C97	Malignant neoplasms
+Range 25	C15-C26	Malignant neoplasms of digestive organs
+Range 26	C30-C39	Malignant neoplasms of respiratory and intrathoracic organs
+Range 27	C40-C41	Malignant neoplasms of bone and articular cartilage
+Range 28	C43-C44	Melanoma and other malignant neoplasms of skin
+Range 29	C45-C49	Malignant neoplasms of mesothelial and soft tissue
+Range 30	C50-C50	Malignant neoplasm of breast
+Range 31	C51-C58	Malignant neoplasms of female genital organs
+Range 32	C60-C63	Malignant neoplasms of male genital organs
+Range 33	C64-C68	Malignant neoplasms of urinary tract
+Range 34	C69-C72	Malignant neoplasms of eye, brain and other parts of central nervous system
+Range 35	C73-C75	Malignant neoplasms of thyroid and other endocrine glands
+Range 36	C76-C80	Malignant neoplasms of ill-defined, secondary and unspecified sites
+Range 37	C81-C96	Malignant neoplasms, stated or presumed to be primary, of lymphoid, haematopoietic and related tissue
+Range 38	C97-C97	Malignant neoplasms of independent (primary) multiple sites
+Range 39	D00-D09	In situ neoplasms
+Range 40	D10-D36	Benign neoplasms
+Range 41	D37-D48	Neoplasms of uncertain or unknown behaviour
+Range 42	D50-D53	Nutritional anaemias
+Range 43	D55-D59	Haemolytic anaemias
+Range 44	D60-D64	Aplastic and other anaemias
+Range 45	D65-D69	Coagulation defects, purpura and other haemorrhagic conditions
+Range 46	D70-D77	Other diseases of blood and blood-forming organs
+Range 47	D80-D89	Certain disorders involving the immune mechanism
+Range 48	E00-E07	Disorders of thyroid gland
+Range 49	E10-E14	Diabetes mellitus
+Range 50	E15-E16	Other disorders of glucose regulation and pancreatic internal secretion
+Range 51	E20-E35	Disorders of other endocrine glands
+Range 52	E40-E46	Malnutrition
+Range 53	E50-E64	Other nutritional deficiencies
+Range 54	E65-E68	Obesity and other hyperalimentation
+Range 55	E70-E90	Metabolic disorders
+Range 56	F00-F09	Organic, including symptomatic, mental disorders
+Range 57	F10-F19	Mental and behavioural disorders due to psychoactive substance use
+Range 58	F20-F29	Schizophrenia, schizotypal and delusional disorders
+Range 59	F30-F39	Mood [affective] disorders
+Range 60	F40-F48	Neurotic, stress-related and somatoform disorders
+Range 61	F50-F59	Behavioural syndromes associated with physiological disturbances and physical factors
+Range 62	F60-F69	Disorders of adult personality and behaviour
+Range 63	F70-F79	Mental retardation
+Range 64	F80-F89	Disorders of psychological development
+Range 65	F90-F98	Behavioural and emotional disorders with onset usually occurring in childhood and adolescence
+Range 66	F99-F99	Unspecified mental disorder
+Range 67	G00-G09	Inflammatory diseases of the central nervous system
+Range 68	G10-G14	Systemic atrophies primarily affecting the central nervous system
+Range 69	G20-G26	Extrapyramidal and movement disorders
+Range 70	G30-G32	Other degenerative diseases of the nervous system
+Range 71	G35-G37	Demyelinating diseases of the central nervous system
+Range 72	G40-G47	Episodic and paroxysmal disorders
+Range 73	G50-G59	Nerve, nerve root and plexus disorders
+Range 74	G60-G64	Polyneuropathies and other disorders of the peripheral nervous system
+Range 75	G70-G73	Diseases of myoneural junction and muscle
+Range 76	G80-G83	Cerebral palsy and other paralytic syndromes
+Range 77	G90-G99	Other disorders of the nervous system
+Range 78	H00-H06	Disorders of eyelid, lacrimal system and orbit
+Range 79	H10-H13	Disorders of conjunctiva
+Range 80	H15-H22	Disorders of sclera, cornea, iris and ciliary body
+Range 81	H25-H28	Disorders of lens
+Range 82	H30-H36	Disorders of choroid and retina
+Range 83	H40-H42	Glaucoma
+Range 84	H43-H45	Disorders of vitreous body and globe
+Range 85	H46-H48	Disorders of optic nerve and visual pathways
+Range 86	H49-H52	Disorders of ocular muscles, binocular movement, accommodation and refraction
+Range 87	H53-H54	Visual disturbances and blindness
+Range 88	H55-H59	Other disorders of eye and adnexa
+Range 89	H60-H62	Diseases of external ear
+Range 90	H65-H75	Diseases of middle ear and mastoid
+Range 91	H80-H83	Diseases of inner ear
+Range 92	H90-H95	Other disorders of ear
+Range 93	I00-I02	Acute rheumatic fever
+Range 94	I05-I09	Chronic rheumatic heart diseases
+Range 95	I10-I15	Hypertensive diseases
+Range 96	I20-I25	Ischaemic heart diseases
+Range 97	I26-I28	Pulmonary heart disease and diseases of pulmonary circulation
+Range 98	I30-I52	Other forms of heart disease
+Range 99	I60-I69	Cerebrovascular diseases
+Range 100	I70-I79	Diseases of arteries, arterioles and capillaries
+Range 101	I80-I89	Diseases of veins, lymphatic vessels and lymph nodes, not elsewhere classified
+Range 102	I95-I99	Other and unspecified disorders of the circulatory system
+Range 103	J00-J06	Acute upper respiratory infections
+Range 104	J09-J18	Influenza and pneumonia
+Range 105	J20-J22	Other acute lower respiratory infections
+Range 106	J30-J39	Other diseases of upper respiratory tract
+Range 107	J40-J47	Chronic lower respiratory diseases
+Range 108	J60-J70	Lung diseases due to external agents
+Range 109	J80-J84	Other respiratory diseases principally affecting the interstitium
+Range 110	J85-J86	Suppurative and necrotic conditions of lower respiratory tract
+Range 111	J90-J94	Other diseases of pleura
+Range 112	J95-J99	Other diseases of the respiratory system
+Range 113	K00-K14	Diseases of oral cavity, salivary glands and jaws
+Range 114	K20-K31	Diseases of oesophagus, stomach and duodenum
+Range 115	K35-K38	Diseases of appendix
+Range 116	K40-K46	Hernia
+Range 117	K50-K52	Noninfective enteritis and colitis
+Range 118	K55-K64	Other diseases of intestines
+Range 119	K65-K67	Diseases of peritoneum
+Range 120	K70-K77	Diseases of liver
+Range 121	K80-K87	Disorders of gallbladder, biliary tract and pancreas
+Range 122	K90-K93	Other diseases of the digestive system
+Range 123	L00-L08	Infections of the skin and subcutaneous tissue
+Range 124	L10-L14	Bullous disorders
+Range 125	L20-L30	Dermatitis and eczema
+Range 126	L40-L45	Papulosquamous disorders
+Range 127	L50-L54	Urticaria and erythema
+Range 128	L55-L59	Radiation-related disorders of the skin and subcutaneous tissue
+Range 129	L60-L75	Disorders of skin appendages
+Range 130	L80-L99	Other disorders of the skin and subcutaneous tissue
+Range 131	M00-M03	Infectious arthropathies
+Range 132	M00-M25	Arthropathies
+Range 133	M05-M14	Inflammatory polyarthropathies
+Range 134	M15-M19	Arthrosis
+Range 135	M20-M25	Other joint disorders
+Range 136	M30-M36	Systemic connective tissue disorders
+Range 137	M40-M43	Deforming dorsopathies
+Range 138	M40-M54	Dorsopathies
+Range 139	M45-M49	Spondylopathies
+Range 140	M50-M54	Other dorsopathies
+Range 141	M60-M63	Disorders of muscles
+Range 142	M60-M79	Soft tissue disorders
+Range 143	M65-M68	Disorders of synovium and tendon
+Range 144	M70-M79	Other soft tissue disorders
+Range 145	M80-M85	Disorders of bone density and structure
+Range 146	M80-M94	Osteopathies and chondropathies
+Range 147	M86-M90	Other osteopathies
+Range 148	M91-M94	Chondropathies
+Range 149	M95-M99	Other disorders of the musculoskeletal system and connective tissue
+Range 150	N00-N08	Glomerular diseases
+Range 151	N10-N16	Renal tubulo-interstitial diseases
+Range 152	N17-N19	Renal failure
+Range 153	N20-N23	Urolithiasis
+Range 154	N25-N29	Other disorders of kidney and ureter
+Range 155	N30-N39	Other diseases of urinary system
+Range 156	N40-N51	Diseases of male genital organs
+Range 157	N60-N64	Disorders of breast
+Range 158	N70-N77	Inflammatory diseases of female pelvic organs
+Range 159	N80-N98	Noninflammatory disorders of female genital tract
+Range 160	N99-N99	Other disorders of the genitourinary system
+Range 161	O00-O08	Pregnancy with abortive outcome
+Range 162	O10-O16	Oedema, proteinuria and hypertensive disorders in pregnancy, childbirth and the puerperium
+Range 163	O20-O29	Other maternal disorders predominantly related to pregnancy
+Range 164	O30-O48	Maternal care related to the fetus and amniotic cavity and possible delivery problems
+Range 165	O60-O75	Complications of labour and delivery
+Range 166	O80-O84	Delivery
+Range 167	O85-O92	Complications predominantly related to the puerperium
+Range 168	O94-O99	Other obstetric conditions, not elsewhere classified
+Range 169	P00-P04	Fetus and newborn affected by maternal factors and by complications of pregnancy, labour and delivery
+Range 170	P05-P08	Disorders related to length of gestation and fetal growth
+Range 171	P10-P15	Birth trauma
+Range 172	P20-P29	Respiratory and cardiovascular disorders specific to the perinatal period
+Range 173	P35-P39	Infections specific to the perinatal period
+Range 174	P50-P61	Haemorrhagic and haematological disorders of fetus and newborn
+Range 175	P70-P74	Transitory endocrine and metabolic disorders specific to fetus and newborn
+Range 176	P75-P78	Digestive system disorders of fetus and newborn
+Range 177	P80-P83	Conditions involving the integument and temperature regulation of fetus and newborn
+Range 178	P90-P96	Other disorders originating in the perinatal period
+Range 179	Q00-Q07	Congenital malformations of the nervous system
+Range 180	Q10-Q18	Congenital malformations of eye, ear, face and neck
+Range 181	Q20-Q28	Congenital malformations of the circulatory system
+Range 182	Q30-Q34	Congenital malformations of the respiratory system
+Range 183	Q35-Q37	Cleft lip and cleft palate
+Range 184	Q38-Q45	Other congenital malformations of the digestive system
+Range 185	Q50-Q56	Congenital malformations of genital organs
+Range 186	Q60-Q64	Congenital malformations of the urinary system
+Range 187	Q65-Q79	Congenital malformations and deformations of the musculoskeletal system
+Range 188	Q80-Q89	Other congenital malformations
+Range 189	Q90-Q99	Chromosomal abnormalities, not elsewhere classified
+Range 190	R00-R09	Symptoms and signs involving the circulatory and respiratory systems
+Range 191	R10-R19	Symptoms and signs involving the digestive system and abdomen
+Range 192	R20-R23	Symptoms and signs involving the skin and subcutaneous tissue
+Range 193	R25-R29	Symptoms and signs involving the nervous and musculoskeletal systems
+Range 194	R30-R39	Symptoms and signs involving the urinary system
+Range 195	R40-R46	Symptoms and signs involving cognition, perception, emotional state and behaviour
+Range 196	R47-R49	Symptoms and signs involving speech and voice
+Range 197	R50-R69	General symptoms and signs
+Range 198	R70-R79	Abnormal findings on examination of blood, without diagnosis
+Range 199	R80-R82	Abnormal findings on examination of urine, without diagnosis
+Range 200	R83-R89	Abnormal findings on examination of other body fluids, substances and tissues, without diagnosis
+Range 201	R90-R94	Abnormal findings on diagnostic imaging and in function studies, without diagnosis
+Range 202	R95-R99	Ill-defined and unknown causes of mortality
+Range 203	S00-S09	Injuries to the head
+Range 204	S10-S19	Injuries to the neck
+Range 205	S20-S29	Injuries to the thorax
+Range 206	S30-S39	Injuries to the abdomen, lower back, lumbar spine and pelvis
+Range 207	S40-S49	Injuries to the shoulder and upper arm
+Range 208	S50-S59	Injuries to the elbow and forearm
+Range 209	S60-S69	Injuries to the wrist and hand
+Range 210	S70-S79	Injuries to the hip and thigh
+Range 211	S80-S89	Injuries to the knee and lower leg
+Range 212	S90-S99	Injuries to the ankle and foot
+Range 213	T00-T07	Injuries involving multiple body regions
+Range 214	T08-T14	Injuries to unspecified part of trunk, limb or body region
+Range 215	T15-T19	Effects of foreign body entering through natural orifice
+Range 216	T20-T25	Burns and corrosions of external body surface, specified by site
+Range 217	T20-T32	Burns and corrosions
+Range 218	T26-T28	Burns and corrosions confined to eye and internal organs
+Range 219	T29-T32	Burns and corrosions of multiple and unspecified body regions
+Range 220	T33-T35	Frostbite
+Range 221	T36-T50	Poisoning by drugs, medicaments and biological substances
+Range 222	T51-T65	Toxic effects of substances chiefly nonmedicinal as to source
+Range 223	T66-T78	Other and unspecified effects of external causes
+Range 224	T79-T79	Certain early complications of trauma
+Range 225	T80-T88	Complications of surgical and medical care, not elsewhere classified
+Range 226	T90-T98	Sequelae of injuries, of poisoning and of other consequences of external causes
+Range 227	U00-U49	Provisional assignment of new diseases of uncertain etiology or emergency use
+Range 228	U82-U85	Resistance to antimicrobial and antineoplastic drugs
+Range 229	V01-V09	Pedestrian injured in transport accident
+Range 230	V01-V99	Transport accidents
+Range 231	V01-X59	Accidents
+Range 232	V10-V19	Pedal cyclist injured in transport accident
+Range 233	V20-V29	Motorcycle rider injured in transport accident
+Range 234	V30-V39	Occupant of three-wheeled motor vehicle injured in transport accident
+Range 235	V40-V49	Car occupant injured in transport accident
+Range 236	V50-V59	Occupant of pick-up truck or van injured in transport accident
+Range 237	V60-V69	Occupant of heavy transport vehicle injured in transport accident
+Range 238	V70-V79	Bus occupant injured in transport accident
+Range 239	V80-V89	Other land transport accidents
+Range 240	V90-V94	Water transport accidents
+Range 241	V95-V97	Air and space transport accidents
+Range 242	V98-V99	Other and unspecified transport accidents
+Range 243	W00-W19	Falls
+Range 244	W00-X59	Other external causes of accidental injury
+Range 245	W20-W49	Exposure to inanimate mechanical forces
+Range 246	W50-W64	Exposure to animate mechanical forces
+Range 247	W65-W74	Accidental drowning and submersion
+Range 248	W75-W84	Other accidental threats to breathing
+Range 249	W85-W99	Exposure to electric current, radiation and extreme ambient air temperature and pressure
+Range 250	X00-X09	Exposure to smoke, fire and flames
+Range 251	X10-X19	Contact with heat and hot substances
+Range 252	X20-X29	Contact with venomous animals and plants
+Range 253	X30-X39	Exposure to forces of nature
+Range 254	X40-X49	Accidental poisoning by and exposure to noxious substances
+Range 255	X50-X57	Overexertion, travel and privation
+Range 256	X58-X59	Accidental exposure to other and unspecified factors
+Range 257	X60-X84	Intentional self-harm
+Range 258	X85-Y09	Assault
+Range 259	Y10-Y34	Event of undetermined intent
+Range 260	Y35-Y36	Legal intervention and operations of war
+Range 261	Y40-Y59	Drugs, medicaments and biological substances causing adverse effects in therapeutic use
+Range 262	Y40-Y84	Complications of medical and surgical care
+Range 263	Y60-Y69	Misadventures to patients during surgical and medical care
+Range 264	Y70-Y82	Medical devices associated with adverse incidents in diagnostic and therapeutic use
+Range 265	Y83-Y84	Surgical and other medical procedures as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure
+Range 266	Y85-Y89	Sequelae of external causes of morbidity and mortality
+Range 267	Y90-Y98	Supplementary factors related to causes of morbidity and mortality classified elsewhere
+Range 268	Z00-Z13	Persons encountering health services for examination and investigation
+Range 269	Z20-Z29	Persons with potential health hazards related to communicable diseases
+Range 270	Z30-Z39	Persons encountering health services in circumstances related to reproduction
+Range 271	Z40-Z54	Persons encountering health services for specific procedures and health care
+Range 272	Z55-Z65	Persons with potential health hazards related to socioeconomic and psychosocial circumstances
+Range 273	Z70-Z76	Persons encountering health services in other circumstances
+Range 274	Z80-Z99	Persons with potential health hazards related to family and personal history and certain conditions influencing health status

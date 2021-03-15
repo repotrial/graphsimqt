@@ -1,0 +1,22 @@
+Chapter	Code Range	Description
+Chapter 1	A00-B99	Certain infectious and parasitic diseases
+Chapter 2	C00-D49	Neoplasms
+Chapter 3	D50-D89	Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+Chapter 4	E00-E99	Endocrine, nutritional and metabolic diseases
+Chapter 5	F00-F99	Mental, Behavioral and Neurodevelopmental disorders
+Chapter 6	G00-G99	Diseases of the nervous system
+Chapter 7	H00-H59	Diseases of the eye and adnexa
+Chapter 8	H60-H95	Diseases of the ear and mastoid process
+Chapter 9	I00-I99	Diseases of the circulatory system
+Chapter 10	J00-J99	Diseases of the respiratory system
+Chapter 11	K00-K95	Diseases of the digestive system
+Chapter 12	L00-L99	Diseases of the skin and subcutaneous tissue
+Chapter 13	M00-M99	Diseases of the musculoskeletal system and connective tissue
+Chapter 14	N00-N99	Diseases of the genitourinary system
+Chapter 15	O00-O9A	Pregnancy, childbirth and the puerperium
+Chapter 16	P00-P96	Certain conditions originating in the perinatal period
+Chapter 17	Q00-Q99	Congenital malformations, deformations and chromosomal abnormalities
+Chapter 18	R00-R99	Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified
+Chapter 19	S00-T88	Injury, poisoning and certain other consequences of external causes
+Chapter 20	V00-Y99	External causes of morbidity
+Chapter 21	Z00-Z99	Factors influencing health status and contact with health services
