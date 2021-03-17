@@ -27,9 +27,11 @@ def run_permutation_tests(num_permutations=1000):
 
     for distance_type, prop in props.items():
         dist = GraphDistance(rr_graph, ji_graph, icd_10_codes, prop)
-        add_line_to_results(results, False, 'global', dist.global_distance, distance_type)
+        add_line_to_results(results, False, 'global', dist.global_distance, distance_type, 'Global', 'Global')
         for icd_10_code, distance in dist.local_distances.items():
-            add_line_to_results(results, False, icd_10_code, distance, distance_type)
+            icd_range = code_to_range[icd_10_code]
+            icd_chapter = code_to_chapter[icd_10_code]
+            add_line_to_results(results, False, icd_10_code, distance, distance_type, icd_range, icd_chapter)
 
     for _ in range(num_permutations):
         gtg.random_rewire(rr_graph, n_iter=100)
