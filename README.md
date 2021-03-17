@@ -26,3 +26,12 @@ Compare the two diseasomes via permutation tests:
 ```
 
 Depending on the number of permutations, this might take a while. The results can be found in the `results` directory.
+
+## Visualizing the results
+
+Once all results have been computed, you can visualize them using a Jupyter Notebook:
+
+```sh
+(diseasomes) jupyter notebook playground.ipynb
+```
+
