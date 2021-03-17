@@ -1,19 +1,15 @@
 from diseasomes.permutation_tests import run_permutation_tests
 from diseasomes.compute_empirical_p_values import compute_empirical_p_values
-from diseasomes.compute_mwu_p_values import compute_mwu_p_values
-from diseasomes.summarize_empirical_p_values import summarize_empirical_p_values
-from diseasomes.analyze_commrocg import analyze_commrocg
+from diseasomes.compute_mwu_p_values import compute_all_mwu_p_values
+from diseasomes.compute_wilcoxon_p_values import compute_all_wilcoxon_p_values
 import argparse
 
 
 def compare_diseasomes(num_permutations):
     run_permutation_tests(num_permutations=num_permutations)
     compute_empirical_p_values()
-    compute_mwu_p_values('chapter')
-    compute_mwu_p_values('range')
-    summarize_empirical_p_values('chapter')
-    summarize_empirical_p_values('range')
-    analyze_commrocg()
+    compute_all_mwu_p_values()
+    compute_all_wilcoxon_p_values()
 
 
 if __name__ == '__main__':

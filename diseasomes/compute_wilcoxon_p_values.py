@@ -3,7 +3,7 @@ import itertools as itt
 import scipy.stats as sps
 
 
-def compute_global_or_commrocg_mwu_p_values(global_or_commrocg):
+def compute_global_or_commrocg_wilcoxon_p_values(global_or_commrocg):
     results = pd.read_csv('../results/permutation_results.csv')
     if global_or_commrocg == 'commrocg':
         commrocg = set(pd.read_csv('../data/commrocg.tsv', sep='\t')['Code'])
@@ -18,15 +18,15 @@ def compute_global_or_commrocg_mwu_p_values(global_or_commrocg):
     for distance_type in distance_types:
         select_distance_type = results['distance_type'] == distance_type
         x = results[select_distance_type & original]['distance']
-        y = results[select_distance_type & permuted]['distance']
-        _, p_value = sps.mannwhitneyu(x=x, y=y, alternative='less')
+        y = results[select_distance_type & permuted].groupby('comparison').mean()['distance']
+        _, p_value = sps.wilcoxon(x=x, y=y, alternative='less')
         p_values['distance_type'].append(distance_type)
         p_values['p_value'].append(p_value)
     p_values = pd.DataFrame(data=p_values)
-    p_values.to_csv(f'../results/mwu_{global_or_commrocg}_p_values.csv', index=False)
+    p_values.to_csv(f'../results/wilcoxon_{global_or_commrocg}_p_values.csv', index=False)
 
 
-def compute_mwu_p_values(group_name):
+def compute_wilcoxon_p_values(group_name):
     min_sample_size = 5
     results = pd.read_csv('../results/permutation_results.csv')
     distance_types = list(set(results['distance_type']))
@@ -43,11 +43,11 @@ def compute_mwu_p_values(group_name):
         select_group = results[group_name] == group
         select_distance_type = results['distance_type'] == distance_type
         x = results[select_group & select_distance_type & original]['distance']
-        y = results[select_group & select_distance_type & permuted]['distance']
+        y = results[select_group & select_distance_type & permuted].groupby('comparison').mean()['distance']
         if x.shape[0] < min_sample_size:
             continue
         try:
-            _, p_value = sps.mannwhitneyu(x=x, y=y, alternative='less')
+            _, p_value = sps.wilcoxon(x=x, y=y, alternative='less')
         except ValueError as err:
             raise ValueError(f'{err}\ngroup: {group}\ndistance_type: {distance_type}')
         p_values[group_name].append(group)
@@ -55,15 +55,15 @@ def compute_mwu_p_values(group_name):
         p_values['p_value'].append(p_value)
         p_values['adjusted_p_value'].append(p_value * num_tests)
     p_values = pd.DataFrame(data=p_values)
-    p_values.to_csv(f'../results/mwu_{group_name}_p_values.csv', index=False)
+    p_values.to_csv(f'../results/wilcoxon_{group_name}_p_values.csv', index=False)
 
 
-def compute_all_mwu_p_values():
-    compute_global_or_commrocg_mwu_p_values('commrocg')
-    compute_global_or_commrocg_mwu_p_values('global')
-    compute_mwu_p_values('chapter')
-    compute_mwu_p_values('range')
+def compute_all_wilcoxon_p_values():
+    compute_global_or_commrocg_wilcoxon_p_values('commrocg')
+    compute_global_or_commrocg_wilcoxon_p_values('global')
+    compute_wilcoxon_p_values('chapter')
+    compute_wilcoxon_p_values('range')
 
 
 if __name__ == '__main__':
-    compute_all_mwu_p_values()
+    compute_all_wilcoxon_p_values()
