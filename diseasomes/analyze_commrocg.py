@@ -10,7 +10,7 @@ def analyze_commrocg():
     select_commrocg_results = results['comparison'].isin(commrocg)
     distance_types = list(set(p_values['distance_type']))
     select_significant = p_values['p_value'] < 0.05
-    commrocg_results = {'distance_type': [], 'significance_ratio': [], 'significant_diseases': [], 'mwu_p_value': []}
+    commrocg_results = {'distance_type': [], 'significance_ratio': [], 'significant_diseases': [], 'p_value': []}
     original = results['permuted'] == False
     permuted = results['permuted']
     for distance_type in distance_types:
@@ -25,7 +25,7 @@ def analyze_commrocg():
         commrocg_results['distance_type'].append(distance_type)
         commrocg_results['significance_ratio'].append(num_significant / len(commrocg))
         commrocg_results['significant_diseases'].append(significant_diseases)
-        commrocg_results['mwu_p_value'].append(p_value)
+        commrocg_results['p_value'].append(p_value)
     commrocg_results = pd.DataFrame(data=commrocg_results)
     commrocg_results.to_csv('../results/commrocg_results.csv', index=False)
 

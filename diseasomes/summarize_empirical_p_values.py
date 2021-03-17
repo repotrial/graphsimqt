@@ -2,7 +2,7 @@ import pandas as pd
 import itertools as itt
 
 
-def analyze_empirical_p_values(group_name):
+def summarize_empirical_p_values(group_name):
     p_values = pd.read_csv('../results/empirical_p_values.csv')
     distance_types = list(set(p_values['distance_type']))
     groups = list(set(p_values[group_name]))
@@ -18,9 +18,9 @@ def analyze_empirical_p_values(group_name):
         summary['distance_type'].append(distance_type)
         summary['significance_ratio'].append(num_significant / group_size)
     summary = pd.DataFrame(data=summary)
-    summary.to_csv(f'../results/empirical_p_values_{group_name}_summary.csv')
+    summary.to_csv(f'../results/empirical_p_values_{group_name}_summary.csv', index=False)
 
 
 if __name__ == '__main__':
-    analyze_empirical_p_values('chapter')
-    analyze_empirical_p_values('range')
+    summarize_empirical_p_values('chapter')
+    summarize_empirical_p_values('range')
