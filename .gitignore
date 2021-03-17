@@ -9,7 +9,7 @@ __pycache__/
 
 # Results directory.
 results/*
-results/README.md
+!results/README.md
 
 # C extensions
 *.so
