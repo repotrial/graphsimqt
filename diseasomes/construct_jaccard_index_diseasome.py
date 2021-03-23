@@ -3,18 +3,20 @@ import graph_tool as gt
 import pandas as pd
 import json
 import itertools as itt
+from pathlib import Path
 
 
 def construct_diseasome():
 
     # Read data.
-    jaccard_indices = pd.DataFrame(data=np.load('data/no_hierarchy_icd10_diseaseome_jaccard.npz')['arr_0'])
-    with open('data/no_hierarchy_icd10_diseaseome_cols.json') as fp:
+    jaccard_indices = pd.DataFrame(data=np.load(str(Path('../data/no_hierarchy_icd10_diseaseome_jaccard.npz')))['arr_0'])
+    with open(str(Path('../data/no_hierarchy_icd10_diseaseome_cols.json'))) as fp:
         diseases = json.load(fp)
 
     # Create graph and add nodes.
     ji_graph = gt.Graph(directed=False)
-    disease_to_node = {disease: ji_graph.add_vertex() for disease in diseases}
+    for _ in diseases:
+        ji_graph.add_vertex()
     icd_10_codes = ji_graph.new_vp('string', vals=diseases)
     ji_graph.vertex_properties['ICD-10'] = icd_10_codes
 
@@ -29,7 +31,7 @@ def construct_diseasome():
     ji_graph.num_edges()
 
     # Save diseasome.
-    ji_graph.save('../data/jaccard_index_diseasome.graphml')
+    ji_graph.save(str(Path('../data/jaccard_index_diseasome.graphml')))
 
 
 if __name__ == '__main__':

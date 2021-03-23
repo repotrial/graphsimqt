@@ -1,11 +1,12 @@
 import graph_tool as gt
 import pandas as pd
+from pathlib import Path
 
 
 def construct_diseasome():
 
     # Read data and collect ICD-10 codes.
-    dtb = pd.read_csv('data/dtb.tsv', sep='\t')
+    dtb = pd.read_csv(str(Path('../data/dtb.tsv')), sep='\t')
     diseases = list(set(dtb['D1']).union(set(dtb['D2'])))
 
     # Create graph and add nodes.
@@ -34,7 +35,7 @@ def construct_diseasome():
     rr_graph.edge_properties['RR'] = relative_risk
 
     # Save diseasome.
-    rr_graph.save('../data/relative_risk_diseasome.graphml')
+    rr_graph.save(str(Path('../data/relative_risk_diseasome.graphml')))
 
 
 if __name__ == '__main__':

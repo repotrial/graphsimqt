@@ -1,4 +1,6 @@
 import graph_tool as gt
+from pathlib import Path
+from typing import List
 
 
 def _compute_normalized_edge_property(graph: gt.Graph, property_name: str):
@@ -7,7 +9,7 @@ def _compute_normalized_edge_property(graph: gt.Graph, property_name: str):
     normalized_property = graph.new_ep('double')
     for edge in graph.edges():
         normalized_property[edge] = prop[edge] / max_val
-    graph.edge_properties[f'{property_name}-NORM'] = normalized_property
+    graph.edge_properties['NORM-SCORE'] = normalized_property
 
 
 def _compute_normalized_edge_ranks(graph: gt.Graph, property_name: str):
@@ -23,44 +25,19 @@ def _compute_normalized_edge_ranks(graph: gt.Graph, property_name: str):
         if val > last_val:
             num_lower += 1
         normalized_rank[edge] = (num_lower + 1.0) / graph.num_edges()
-    graph.edge_properties[f'{property_name}-NORM-RANK'] = normalized_rank
+    graph.edge_properties['NORM-RANK'] = normalized_rank
 
 
-def normalize_diseasomes():
+def normalize_diseasomes(paths_to_graphs: List[Path], property_names: List[str]):
 
-    # Load diseasomes.
-    rr_graph = gt.load_graph('data/relative_risk_diseasome.graphml')
-    ji_graph = gt.load_graph('data/jaccard_index_diseasome.graphml')
-
-    # Collect nodes contained in both diseasomes.
-    rr_diseases = {rr_graph.vertex_properties['ICD-10'][node] for node in rr_graph.vertices()}
-    ji_diseases = {ji_graph.vertex_properties['ICD-10'][node] for node in ji_graph.vertices()}
-    common_diseases = rr_diseases.intersection(ji_diseases)
-    rr_is_common_node = rr_graph.new_vp('bool')
-    for node in rr_graph.vertices():
-        rr_is_common_node[node] = rr_graph.vertex_properties['ICD-10'][node] in common_diseases
-    ji_is_common_node = ji_graph.new_vp('bool')
-    for node in ji_graph.vertices():
-        ji_is_common_node[node] = ji_graph.vertex_properties['ICD-10'][node] in common_diseases
-
-    # Delete all nodes that are not contained in one of the two diseasomes.
-    rr_graph.set_vertex_filter(rr_is_common_node)
-    rr_graph.purge_vertices()
-    rr_graph.clear_filters()
-    ji_graph.set_vertex_filter(ji_is_common_node)
-    ji_graph.purge_vertices()
-    ji_graph.clear_filters()
-
-    # Compute normalized scores and edge ranks.
-    _compute_normalized_edge_property(rr_graph, 'RR')
-    _compute_normalized_edge_ranks(rr_graph, 'RR')
-    _compute_normalized_edge_property(ji_graph, 'JI')
-    _compute_normalized_edge_ranks(ji_graph, 'JI')
-
-    # Save normalized diseasomes.
-    ji_graph.save('../data/normalized_jaccard_index_diseasome.graphml')
-    rr_graph.save('../data/normalized_relative_risk_diseasome.graphml')
+    for path_to_graph, property_name in zip(paths_to_graphs, property_names):
+        graph = gt.load_graph(str(path_to_graph))
+        _compute_normalized_edge_property(graph, property_name)
+        _compute_normalized_edge_ranks(graph, property_name)
+        path_to_normalized_graph = path_to_graph.parent.joinpath(f'normalized_{path_to_graph.name}')
+        graph.save(str(path_to_normalized_graph))
 
 
 if __name__ == '__main__':
-    normalize_diseasomes()
+    indices = ['relative_risk', 'jaccard_index', 'phi_correralation']
+    normalize_diseasomes([Path(f'../data/{prefix}_diseasome.graphml') for prefix in indices], ['RR', 'JI', 'PC'])

@@ -1,5 +1,6 @@
 import graph_tool as gt
 import numpy as np
+from typing import List, Dict
 
 
 class GraphDistance(object):
@@ -22,11 +23,8 @@ class GraphDistance(object):
         icd_10_prop = graph.vertex_properties['ICD-10']
         return {icd_10_prop[node]: node for node in graph.vertices()}
 
-    @staticmethod
-    def _get_edge(graph: gt.Graph, source, target, icd_10_to_nodes):
-        return graph.edge(icd_10_to_nodes[source], icd_10_to_nodes[target])
-
-    def _compute_distances(self, g, h, g_icd_10_to_nodes, h_icd_10_to_nodes, edge_properties):
+    def _compute_distances(self, g: gt.Graph, h: gt.Graph, g_icd_10_to_nodes: Dict[str, gt.Vertex],
+                           h_icd_10_to_nodes: Dict[str, gt.Vertex], edge_properties: List[gt.EdgePropertyMap]):
         icd_10_g = g.vertex_properties['ICD-10']
         icd_10_h = h.vertex_properties['ICD-10']
         self.global_distance = 0.0
