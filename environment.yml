@@ -1,4 +1,4 @@
-name: diseasomes
+name: graphsimqt
 channels:
   - conda-forge
 dependencies:
@@ -10,3 +10,4 @@ dependencies:
   - seaborn
   - graph-tool
   - networkx
+  - progress
