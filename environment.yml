@@ -11,3 +11,4 @@ dependencies:
   - graph-tool
   - networkx
   - progress
+  - rise

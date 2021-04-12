@@ -3,8 +3,8 @@ import pandas as pd
 from pathlib import Path
 from typing import Optional, Union
 import warnings
-import argparse
 from progress.spinner import Spinner
+from graphsimqt.utils.get_parsers import get_similarity_parser
 
 
 def _compute_normalized_edge_scores(graph: gt.Graph, normalization_method: Optional[str]):
@@ -79,16 +79,16 @@ def _load_edge_list(path_to_graph: Path, is_directed: Optional[bool], has_header
 
 def _ensure_node_id_property(graph: gt.Graph, path_to_graph: Path, node_id_attribute_name: Optional[str]):
     if node_id_attribute_name and not node_id_attribute_name in graph.vertex_properties:
-        raise ValueError(f'The network {str(path_to_graph)} does not contain a node attribute with '
+        raise ValueError(f'The graph {str(path_to_graph)} does not contain a node attribute with '
                          f'name {node_id_attribute_name}.')
     node_attribute_names = list(graph.vertex_properties.keys())
     if not node_id_attribute_name:
         if len(node_attribute_names) > 1:
-            raise ValueError(f'The network {str(path_to_graph)} has more than 1 node attribute.\n'
+            raise ValueError(f'The graph {str(path_to_graph)} has more than 1 node attribute.\n'
                              f'Please specify node ID attribute via the parameter node_id_attribute_name.')
         elif len(node_attribute_names) == 0:
-            raise ValueError(f'The network {str(path_to_graph)} has more than 0 node attributes.\n'
-                             f'A node ID attribute is required for .graphml networks.')
+            raise ValueError(f'The graph {str(path_to_graph)} has 0 node attributes.\n'
+                             f'A node ID attribute is required for .graphml or .gt input.')
         else:
             node_id_attribute_name = node_attribute_names[0]
     if node_id_attribute_name != 'ID':
@@ -96,7 +96,7 @@ def _ensure_node_id_property(graph: gt.Graph, path_to_graph: Path, node_id_attri
         node_id_attribute_name = 'ID'
         graph.vertex_properties[node_id_attribute_name] = node_id_property
     for node_attribute_name in node_attribute_names:
-        if node_attribute_name != node_id_property:
+        if node_attribute_name != node_id_attribute_name:
             del graph.vertex_properties[node_attribute_name]
     node_id_property = graph.vertex_properties[node_id_attribute_name]
     if node_id_property.python_value_type() is not str:
@@ -150,8 +150,9 @@ def _load_graphml(path_to_graph: Path, node_id_attribute_name: Optional[str],
 
 def normalize_graph(path_to_graph: Union[str, Path], node_id_attribute_name: Optional[str] = None,
                     edge_score_attribute_name: Optional[str] = None, is_directed: Optional[bool] = None,
-                    has_header: bool = False, normalization_method: Optional[str] = 'max', silent: bool = False):
-    """Generates normalized version input graph to be used for similarity quantification and saves it as GraphML file.
+                    has_header: bool = False, normalization_method: Optional[str] = 'max', silent: bool = False,
+                    save: bool = True) -> gt.Graph:
+    """Generates normalized version input graph to be used for similarity quantification.
 
     Parameters
     ----------
@@ -180,6 +181,12 @@ def normalize_graph(path_to_graph: Union[str, Path], node_id_attribute_name: Opt
         'max': divide all scores by maximum. 'max-min': Max-min normalization. 'z-score': Z-score normalization.
     silent : bool, default: False
         Set to True to suppress printing progress to stdout.
+    save : bool, default: True
+
+    Returns
+    -------
+    normalized_graph : graph_tool.Graph
+        Normalized graph.
 
     """
     if not silent:
@@ -187,8 +194,8 @@ def normalize_graph(path_to_graph: Union[str, Path], node_id_attribute_name: Opt
         spinner.next()
     if isinstance(path_to_graph, str):
         path_to_graph = Path(path_to_graph)
-    supported_formats = {'.graphml', '.csv', '.csv2', '.tsv', '.wsv'}
-    if path_to_graph.suffix == '.graphml':
+    supported_formats = {'.graphml', '.gt', '.csv', '.csv2', '.tsv', '.wsv'}
+    if path_to_graph.suffix in {'.graphml', '.gt'}:
         graph = _load_graphml(path_to_graph, node_id_attribute_name, edge_score_attribute_name, is_directed)
     elif path_to_graph.suffix in supported_formats:
         graph = _load_edge_list(path_to_graph, is_directed, has_header)
@@ -204,37 +211,15 @@ def normalize_graph(path_to_graph: Union[str, Path], node_id_attribute_name: Opt
         _compute_normalized_edge_ranks(graph)
         if not silent:
             spinner.next()
-    path_to_normalized_graph = path_to_graph.parent.joinpath(f'normalized_{path_to_graph.stem}.graphml')
-    graph.save(str(path_to_normalized_graph))
-    if not silent:
-        spinner.finish()
-        print(f'Saved normalized graph to {str(path_to_normalized_graph)}.')
+    if save:
+        path_to_normalized_graph = path_to_graph.parent.joinpath(f'{path_to_graph.stem}_normalized.gt')
+        graph.save(str(path_to_normalized_graph))
+        if not silent:
+            spinner.finish()
+            print(f'Saved normalized graph to {str(path_to_normalized_graph)}.')
+    return graph
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser('Normalize input network.')
-    parser.add_argument('graph', type=Path, help='Path to graph that should be normalized. The file format is derived '
-                                                 'from the suffix. If the suffix is graphml, the  input is expected to '
-                                                 'be in GraphML format. Otherwise, an edge list with lines of the form '
-                                                 '<SOURCE><SEP><TARGET>[<SEP><SCORE>] is expected. The separator is '
-                                                 'derived from the suffix. csv: comma. csv2: semicolon. tsv: tab. wsv: '
-                                                 'whitespace. Providing edge scores is optional.')
-    parser.add_argument('--id', type=str, help='Name of node ID attribute to be used for GraphML input. If not '
-                                               'provided, unique node attribute is used if available. Not used for '
-                                               'edge list input.')
-    parser.add_argument('--score', type=str, help='Name of edge score attribute to be used for GraphML input. If not '
-                                                  'provided, unique edge attribute is used if available. Not used for'
-                                                  'edge list input.')
-    parser.add_argument('--directed', type=bool, help='Specifies if graphs given as edge lists should be interpreted '
-                                                      'as directed (True) or undirected (False). Not used for GraphML '
-                                                      'input.')
-    parser.add_argument('--header', action='store_true', help='Set this flag if your input is given as an edge list '
-                                                              'with a header that should be skipped. Not used for '
-                                                              'GraphML input.')
-    parser.add_argument('--normalization', type=str, help='Method used to normalize the scores. max: divide all scores '
-                                                          'by maximum. max-min: Max-min normalization. z-score: '
-                                                          'Z-score normalization. Default: max.', default='max',
-                        choices=['max', 'max-min', 'z-score'])
-    parser.add_argument('--silent', action='store_true', help='Set this flag to suppress printing progress to stdout.')
-    args = parser.parse_args()
-    normalize_graph(args.graph, args.id, args.score, args.directed, args.header, args.normalization, args.silent)
+    args = get_similarity_parser('normalize_graph').parse_args()
+    _ = normalize_graph(args.graph, args.id, args.score, args.directed, args.header, args.normalization, args.silent)
