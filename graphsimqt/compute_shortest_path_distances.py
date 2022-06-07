@@ -1,6 +1,6 @@
 import graph_tool as gt
 import graph_tool.topology as gtt
-from typing import Union, Tuple, Optional, List, Dict
+from typing import Union, Tuple, Optional, List, Dict, Sequence
 from pathlib import Path
 import pandas as pd
 import itertools as itt
@@ -40,13 +40,17 @@ def _get_attributes(reference_graph: gt.Graph, distance_graph: gt.Graph,
     return ref_ids, dist_ids, ref_scores
 
 
-def _initialize_node_filter(distance_graph: gt.Graph, exclude_as_connectors: Optional[Tuple[str, str]],
+def _initialize_node_filter(distance_graph: gt.Graph, exclude_as_connectors: Optional[Sequence[Tuple[str, str]]],
                             exclude_terminals: bool, ref_ids: gt.VertexPropertyMap,
                             dist_ids: gt.VertexPropertyMap) -> gt.VertexPropertyMap:
     node_filter = distance_graph.new_vp('boolean', val=False)
     if exclude_as_connectors:
+
         for node in distance_graph.vertices():
             node_filter[node] = (distance_graph.vp[exclude_as_connectors[0]][node] == exclude_as_connectors[1])
+            # modify here to be able to filter for two dif. node types
+            # for c in exclude_as_connectors:
+            #     node_filter[node] = (distance_graph.vp[c[0]][node] == c[1])
     if exclude_terminals:
         ref_ids_as_set = set(ref_ids)
         for node in distance_graph.vertices():
@@ -69,7 +73,7 @@ def _compute_distance(reference_graph: gt.Graph, distance_graph: gt.Graph, dist_
     filter_source = node_filter[source]
     filter_target = node_filter[target]
     node_filter[source] = node_filter[target] = False
-    distance = gtt.shortest_distance(distance_graph, source, target)
+    distance = gtt.shortest_distance(distance_graph, source, target, directed=False)
     if distance > distance_graph.num_vertices():
         distance = np.inf
     node_filter[source] = filter_source
@@ -77,6 +81,10 @@ def _compute_distance(reference_graph: gt.Graph, distance_graph: gt.Graph, dist_
     distances['source'].append(dist_ids[source])
     distances['target'].append(dist_ids[target])
     distances['distance'].append(distance)
+    # if distance_graph.vp['TYPE'][source] == 'drug':
+    #     edge = reference_graph.edge(ref_ids_to_nodes[dist_ids[source]], ref_ids_to_nodes[dist_ids[target]])
+    # elif distance_graph.vp['TYPE'][source] == 'disease':
+    #     edge = reference_graph.edge(ref_ids_to_nodes[dist_ids[target]], ref_ids_to_nodes[dist_ids[source]])
     edge = reference_graph.edge(ref_ids_to_nodes[dist_ids[source]], ref_ids_to_nodes[dist_ids[target]])
     distances['reference_edge'].append(bool(edge))
     if edge and edge_scores:
@@ -91,7 +99,7 @@ def compute_shortest_path_distances(reference_graph: Union[str, Path, gt.Graph],
                                     distance_node_id_attribute_name: Optional[str] = None,
                                     reference_edge_score_attribute_name: Optional[str] = None,
                                     exclude_terminals: bool = True,
-                                    exclude_as_connectors: Optional[Tuple[str, str]] = None, silent: bool = False):
+                                    exclude_as_connectors: Optional[Sequence[Tuple[str, str]]] = None, silent: bool = False):
     """Computes shortest path distances.
 
     Parameters
@@ -147,6 +155,10 @@ def compute_shortest_path_distances(reference_graph: Union[str, Path, gt.Graph],
     for source, target in itt.combinations(terminals, 2):
         if not silent:
             bar.next()
+        # For drug-disease distances uncomment the following if statement, since we don't want dr-dr or dis-dis distances when we're computing dr-dis distances
+        # if distance_graph.vp['TYPE'][source] != distance_graph.vp['TYPE'][target]:
+        #     _compute_distance(reference_graph, distance_graph, dist_ids, ref_ids_to_nodes, node_filter, source, target,
+        #                   edge_scores, distances)
         _compute_distance(reference_graph, distance_graph, dist_ids, ref_ids_to_nodes, node_filter, source, target,
                           edge_scores, distances)
     if not silent:

@@ -11,7 +11,9 @@ def run_shortest_path_analysis(reference_graph: Union[str, Path, gt.Graph], dist
                                distance_node_id_attribute_name: Optional[str] = None,
                                reference_edge_score_attribute_name: Optional[str] = None,
                                exclude_terminals: bool = True,
-                               exclude_as_connectors: Optional[Tuple[str, str]] = None, silent: bool = False):
+                               exclude_as_connectors: Optional[Tuple[str, str]] = None,
+                               # exclude_as_connectors: Optional[Sequence[Tuple[str, str]]] = None,
+                               silent: bool = False):
     """Runs the entire shortest path analysis pipeline.
 
     Sequentially runs graphsimqt.compute_shortest_path_distances.compute_shortest_path_distances() and

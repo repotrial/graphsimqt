@@ -106,7 +106,9 @@ def run_permutation_tests(graph_1: Union[str, Path, gt.Graph], graph_2: Union[st
         if not silent:
             bar.next()
         gtg.random_rewire(graph_1, n_iter=100)
+        # graph_1.set_directed(False)
         gtg.random_rewire(graph_2, n_iter=100)
+        # graph_2.set_directed(False)
         for distance_type, edge_property in edge_properties.items():
             distances = GraphDistance(graph_1, graph_2, node_ids, edge_property)
             _add_to_results(distances, True, distance_type, global_distances, local_distances)
