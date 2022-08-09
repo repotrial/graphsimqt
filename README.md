@@ -20,11 +20,6 @@ conda activate graphsimqt
 
 
 
-## Results for network-based drug repurposing
-
-Have a look at the Juptyer notebook `notebooks/presentation.ipynb` (plain markdown, you do not need to re-run anything). If you have installed `RISE` as specified in the YAML environment, you can view the notebook in presentation view.
-
-
 
 ## Re-running the analyses
 
@@ -40,14 +35,18 @@ Run the similarity analyses based on the graph edit distance (takes even longer)
 (graphsimqt) python -m graphsimqt.analyses.run_similarity_analyses
 ```
 
-The results can be found in subdirectories of the `results` directory.
+The results will be saved in subdirectories of the `results` directory.
 
 
 
-## Plotting the results
+## Plotting the results for global and local analyses of diseasome and drugomes
 
-Once all results have been computed, you can plot by executing all steps in the Jupyter notebook `notebooks/plots.ipynb`.
+Once all results have been computed, you can plot by executing all steps in the Jupyter notebooks `notebooks/plots_uniform_EEC.ipynb`, `notebooks/plots_rankBased_EEC.ipynb`, and `notebooks/plots_heatmaps.ipynb`.
 
+
+## Viewing the results for global and local analyses
+
+Have a look at the Juptyer notebooks `notebooks/plots_uniform_EEC.ipynb`, `notebooks/plots_rankBased_EEC.ipynb`, and `notebooks/plots_heatmaps.ipynb` (plain markdown, you do not need to re-run anything) for the results of the performed analyses. If you have installed `RISE` as specified in the YAML environment, you can view the notebooks in presentation view.
 
 
 ## Using GraphSimQT for custom input
