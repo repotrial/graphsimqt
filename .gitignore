@@ -11,7 +11,7 @@ __pycache__/
 data/graphs/normalized_*
 
 # Results directory.
-results/*
+#results/*
 !results/README.md
 
 # C extensions
