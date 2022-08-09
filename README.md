@@ -19,17 +19,38 @@ conda activate graphsimqt
 ```
 
 
+## Using GraphSimQT for custom input
+
+Each Python module `MODULE_NAME.py` contained in the `graphsimqt` package can be used from the command line or as a library function. For information on the required input parameters, print the help messages of the command line interfaces:
+
+```sh
+(graphsimqt) python -m graphsimqt.MODULE_NAME -h
+```
+
+Alternatively, display the docstring of the library functions:
+
+```python
+import graphsimqt
+help(graphsimqt.MODULE_NAME)
+```
+
+For the analyses of networks with more than 1M edges, we recommend to use a more powerful computing machine than a normal PC (e.g. with 32 GB memory)
+
+For instance to run the similarity analysis between gene-based and comorbidity-based diseasomes (in ICD10 namespace) with default parameters:
+```sh
+python -m graphsimqt.run_similarity_analysis data/graphs/disease_disease/icd10_est_comorbidity_based.gt data/graphs/disease_disease/icd10_gene_based.gt --dirname disease_gene_vs_disease_comorbidity_ICD10
+```
 
 
-## Re-running the analyses
+## Re-running the entire analyses
 
-Run the shortest path analyses (takes a while):
+Run all the shortest path analyses (takes a couple of days):
 
 ```sh
 (graphsimqt) python -m graphsimqt.analyses.run_shortest_path_analyses
 ```
 
-Run the similarity analyses based on the graph edit distance (takes even longer):
+Run all the similarity analyses based on the graph edit distance (for all possible pair-wise network comparisons takes 2-3 weeks):
 
 ```sh
 (graphsimqt) python -m graphsimqt.analyses.run_similarity_analyses
@@ -47,23 +68,6 @@ Once all results have been computed, you can plot by executing all steps in the 
 ## Viewing the results for global and local analyses
 
 Have a look at the Juptyer notebooks `notebooks/plots_uniform_EEC.ipynb`, `notebooks/plots_rankBased_EEC.ipynb`, and `notebooks/plots_heatmaps.ipynb` (plain markdown, you do not need to re-run anything) for the results of the performed analyses. If you have installed `RISE` as specified in the YAML environment, you can view the notebooks in presentation view.
-
-
-## Using GraphSimQT for custom input
-
-Each Python module `MODULE_NAME.py` contained in the `graphsimqt` package can be used from the command line or as a library function. For information on the required input parameters, print the help messages of the command line interfaces:
-
-```sh
-(graphsimqt) python -m graphsimqt.MODULE_NAME -h
-```
-
-Alternatively, display the docstring of the library functions:
-
-```python
-import graphsimqt
-help(graphsimqt.MODULE_NAME)
-```
-
 
 
 ## License
