@@ -34,23 +34,23 @@ import graphsimqt
 help(graphsimqt.MODULE_NAME)
 ```
 
-For the analyses of networks with more than 1M edges, we recommend to use a more powerful computing machine than a normal PC (e.g. with 32 GB memory)
-
 For instance to run the similarity analysis between gene-based and comorbidity-based diseasomes (in ICD10 namespace) with default parameters:
 ```sh
 python -m graphsimqt.run_similarity_analysis data/graphs/disease_disease/icd10_est_comorbidity_based.gt data/graphs/disease_disease/icd10_gene_based.gt --dirname disease_gene_vs_disease_comorbidity_ICD10
 ```
 
+For the analyses of networks with more than 1M edges, we recommend to use a more powerful computing machine than a normal PC (e.g. with 32 GB memory)
+
 
 ## Re-running the entire analyses
 
-Run all the shortest path analyses (takes a couple of days):
+Run all the shortest path analyses (running takes a couple of days):
 
 ```sh
 (graphsimqt) python -m graphsimqt.analyses.run_shortest_path_analyses
 ```
 
-Run all the similarity analyses based on the graph edit distance (for all possible pair-wise network comparisons takes 2-3 weeks):
+Run all the similarity analyses based on the graph edit distance (running all possible pair-wise comparisons of diseasomes and drugomes takes 2-3 weeks):
 
 ```sh
 (graphsimqt) python -m graphsimqt.analyses.run_similarity_analyses
