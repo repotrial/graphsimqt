@@ -1,0 +1,1 @@
+Save results of gene-based vs. comorbidity-based diseasomes (ICD10) in this directory.
