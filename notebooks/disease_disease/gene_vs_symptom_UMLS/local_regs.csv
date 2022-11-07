@@ -1,0 +1,4 @@
+distance_type,reg_coef1,reg_coef2,p_value_slope1,p_value_slope2
+normalized_ranks,-0.0096,-5.186e-05,0.000,0.000
+topology_only,-0.0162,1.422e-05,0.000,0.006
+normalized_scores,-0.0110,-6.663e-05,0.000,0.000
