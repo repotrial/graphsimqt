@@ -87,6 +87,35 @@ def run_similarity_analyses():
                             graph_dir.joinpath('drug_disease/drugbank_icd10_viaP_distance2.gt'),
                             result_directory_name='GED_drug_indication_distances_vs_DrPD_ICD10', node_id_attribute_name='ID')
 
+    # similarity analyses of disease-disease networks in UMLS namespace
+    run_similarity_analysis(graph_dir.joinpath('disease_disease/umls_gene_based.gt'),
+                            graph_dir.joinpath('disease_disease/umls_drug_based.gt'),
+                            result_directory_name='disease_gene_vs_disease_drug_UMLS', node_id_attribute_name='ID')
+
+    run_similarity_analysis(graph_dir.joinpath('disease_disease/umls_drug_based.gt'),
+                            graph_dir.joinpath('disease_disease/umls_variant_based.gt'),
+                            result_directory_name='disease_drug_vs_disease_variant_UMLS', node_id_attribute_name='ID')
+
+    run_similarity_analysis(graph_dir.joinpath('disease_disease/umls_gene_based.gt'),
+                            graph_dir.joinpath('disease_disease/umls_variant_based.gt'),
+                            result_directory_name='disease_gene_vs_disease_variant_UMLS', node_id_attribute_name='ID')
+
+    run_similarity_analysis(graph_dir.joinpath('disease_disease/umls_drug_based.gt'),
+                            graph_dir.joinpath('disease_disease/umls_symptom_based_pruned_below4lev.gt'),
+                            result_directory_name='disease_drug_vs_disease_symptom_UMLS', node_id_attribute_name='ID')
+
+    run_similarity_analysis(graph_dir.joinpath('disease_disease/umls_gene_based.gt'),
+                            graph_dir.joinpath('disease_disease/umls_symptom_based_pruned_below4lev.gt'),
+                            result_directory_name='disease_gene_vs_disease_symptom_UMLS', node_id_attribute_name='ID')
+
+    run_similarity_analysis(graph_dir.joinpath('disease_disease/umls_symptom_based_pruned_below4lev.gt'),
+                            graph_dir.joinpath('disease_disease/umls_variant_based.gt'),
+                            result_directory_name='disease_symptom_vs_disease_variant_UMLS', node_id_attribute_name='ID')
+
+    # similarity analyses of drug-disease networks in UMLS namespace
+    run_similarity_analysis(graph_dir.joinpath('drug_disease/drugbank_umls_indications.gt'),
+                            graph_dir.joinpath('drug_disease/drugbank_umls_viaP_distance2.gt'),
+                            result_directory_name='GED_drug_indication_distances_vs_DrPD_UMLS', node_id_attribute_name='ID')
 
 if __name__ == '__main__':
     run_similarity_analyses()
