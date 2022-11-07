@@ -60,9 +60,11 @@ The results will be saved in subdirectories of the `results` directory.
 
 
 
-## Plotting the results for global and local analyses of diseasome and drugomes
+## Reproducing results plots for global and local analyses of diseasome and drugomes
 
-Once all results have been computed, you can plot by executing all steps in the Jupyter notebooks `notebooks/plots_uniform_EEC.ipynb`, `notebooks/plots_rankBased_EEC.ipynb`, and `notebooks/plots_heatmaps.ipynb`.
+Once all results have been computed by re-running the entire analyses (as explained above), you can reproduce the plots shown in the paper by executing all steps in the Jupyter notebooks `notebooks/plots_uniform_EEC.ipynb`, `notebooks/plots_rankBased_EEC.ipynb`, and `notebooks/plots_heatmaps.ipynb`.
+
+If you want to skip running the analyses and instead use our obtained results for reproducing the plots, you need to first download the results from [here](https://api.graphsimviz.net/download_results) and unzip the file under the results directory in the git repo. Then you can use the Jupyter notebooks to plot. Please notice that the result files are large hence they are not deposited to this git repository.
 
 
 ## Viewing the results for global and local analyses
