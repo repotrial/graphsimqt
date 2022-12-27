@@ -11,7 +11,12 @@ __pycache__/
 data/graphs/normalized_*
 
 # Results directory.
+results/*
 !results/README.md
+
+# notebooks directory.
+notebooks/*.pdf
+notebooks/*.png
 
 # C extensions
 *.so
